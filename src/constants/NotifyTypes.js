@@ -1,0 +1,10 @@
+
+//export const LIST_PRODUCT = 'LIST_PRODUCT'
+export const NOTIFY_ADD = 'NOTIFY_ADD'
+export const NOTIFY_UPDATE = 'NOTIFY_UPDATE'
+export const NOTIFY_DELETE = 'NOTIFY_DELETE'
+export const NOTIFY_VALIDATE = 'NOTIFY_VALIDATE'
+
+
+
+
