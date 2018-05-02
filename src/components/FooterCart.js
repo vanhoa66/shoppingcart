@@ -11,7 +11,7 @@ class FooterCart extends Component {
         } else {
             xhtml = <tr>
                 <td colSpan={4}>There are <b>{totalItem}</b> items in your shopping cart.</td>
-                <td colSpan={2} className="total-price text-left">{showMoney(totalMoney, "VND", "right")} </td>
+                <td colSpan={2} className="total-price text-left">{showMoney(totalMoney, "$", "right")} </td>
             </tr>
         }
         return xhtml

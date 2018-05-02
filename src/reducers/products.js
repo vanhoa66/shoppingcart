@@ -19,6 +19,14 @@ const initialState = [
         canBuy: true
     },
     {
+        id: "target-leap-frog",
+        name: "target-leap-frog",
+        image: "target-leap-frog.jpg",
+        desc: "Lorem ipsum dolor sit amet, consectetur adipisicing eliti!",
+        price: 26,
+        canBuy: true
+    },
+    {
         id: "robo_fig_combo",
         name: "robo_fig_combo",
         image: "robo_fig_combo.jpg",

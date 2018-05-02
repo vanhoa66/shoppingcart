@@ -50,7 +50,8 @@ class ProductItem extends Component {
                     <h4 className="media-heading">{product.name}</h4>
                     <p>{product.desc}</p>
                     <input name="quantity" type="number" value={quantity} onChange={this.handleChange} min={1} />
-                    <a onClick={() => this.handleClick(+quantity)} data-product={1} className="price"> {showMoney(product.price, "VND", "right")} </a>
+                    <a className="price"> {showMoney(product.price, "$", "right")} </a>
+                    <a onClick={() => this.handleClick(+quantity)} data-product={1} className="btn btn-default price">Buy</a>
                 </div>
             )
         } else {
@@ -58,7 +59,7 @@ class ProductItem extends Component {
                 <div className="media-body">
                     <h4 className="media-heading">{product.name}</h4>
                     <p>{product.desc}</p>
-                    <a data-product={1} className="price"> {showMoney(product.price, "VND", "right")}  </a>
+                    <span className="price"> {showMoney(product.price, "$", "right")}  </span>
                 </div>
             )
         }

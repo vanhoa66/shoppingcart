@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import showMoney from './../libs/Helper'
+import Validate from './../libs/Validate';
 import { NOTIFY_UPDATE, NOTIFY_DELETE } from './../constants/NotifyTypes'
 
 class CartItem extends Component {
@@ -14,7 +15,10 @@ class CartItem extends Component {
         this.setState({ quantity });
     }
     handleChange = (event) => {
-        this.setState({ quantity: event.target.value });
+        let { value } = event.target;
+        if (Validate.checkQuantity(+value)) {
+            this.setState({ quantity: value });
+        }
     }
     handleUpdate = (id, quantity) => {
         this.props.onClickUpdateCart(id, quantity)
@@ -24,12 +28,6 @@ class CartItem extends Component {
         this.props.onClickDeleteCart(id)
         this.props.onClickNotify(NOTIFY_DELETE);
     }
-
-    // showInfo(info, loai, kieu){
-    //     if(kieu==="right")
-    //     return info + ' ' + loai;
-    //     return loai + ' ' + info
-    // }
 
     render() {
         const { item, index } = this.props;
@@ -41,17 +39,17 @@ class CartItem extends Component {
             <tr>
                 <th scope="row">{index + 1}</th>
                 <td>{product.name}</td>
-                <td>{showMoney(price, "VND", "right")}</td>
+                <td>{showMoney(price, "$", "right")}</td>
                 <td><input name="quantity" type="number" value={quantity} onChange={this.handleChange} min={1} /></td>
-                    <td><strong>{showMoney(total, "VND", "right")}</strong></td>
-                    <td>
-                        <a onClick={() => this.handleUpdate(product.id, +quantity)} className="label btn-primary update-cart-item" data-product>Update</a>
-                        <a onClick={() => this.handleDelete(product.id)} className="label btn-danger delete-cart-item" data-product>Delete</a>
-                    </td>
+                <td><strong>{showMoney(total, "$", "right")}</strong></td>
+                <td>
+                    <a onClick={() => this.handleUpdate(product.id, +quantity)} className="label label-info update-cart-item" >Update</a>
+                    <a onClick={() => this.handleDelete(product.id)} className="label label-danger delete-cart-item" >Delete</a>
+                </td>
             </tr>
-                );
-            }
-        }
-        
-        export default CartItem
-        
+        );
+    }
+}
+
+export default CartItem
+
